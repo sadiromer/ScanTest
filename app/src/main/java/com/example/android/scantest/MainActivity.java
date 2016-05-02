@@ -335,6 +335,69 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
 
     //______________________________________________________________________________________________
 
+/*
+    //---------------------------PreviewCallback----------------------------------------------------
+    private Camera.PreviewCallback previewCallback = new Camera.PreviewCallback() {
+
+        public void onPreviewFrame(byte[] data, Camera camera) {
+            LuminanceSource source= buildLuminanceSourceFromCameraPreview(data, camera.getParameters());
+
+            BinaryBitmap binBitmap = new BinaryBitmap(new HybridBinarizer(source));
+            if(!extracting){
+                try {
+                    Result result = new MultiFormatReader().decode(binBitmap);
+
+                    Toast.makeText(getApplicationContext(), result.toString() , Toast.LENGTH_LONG).show();
+
+                    if(result.toString().equals("START")){
+                        stopAutofocus();
+                        CaptureButton.setText("STOP!");
+                        Log.i("Extrating", "Begin!");
+
+                        extracting=true;
+                        System.out.println(result.toString());
+                    }
+
+                } catch (NotFoundException e) {
+
+                    // Auto-generated catch block
+                    e.printStackTrace();
+                }//try...catch
+            }else{
+
+                try {
+                    Result result = new MultiFormatReader().decode(binBitmap);
+
+                    StringResults.add(result.toString());
+                    //String resultString= result.toString();
+                    System.out.println("\n result.toString(): >>"+StringResults+"<<");
+
+                    Toast.makeText(getApplicationContext(), result.toString() , Toast.LENGTH_LONG).show();
+
+                } catch (NotFoundException e) {
+
+                    // Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+
+
+
+                binBitmapArray.add(binBitmap);
+                NumberOfBitmaps++;
+
+                Log.i("Extrating", NumberOfBitmaps +" frames added.");
+
+            }
+            handler.postDelayed(previewRunnable, ExtractingPeriod);
+
+        }
+    };
+
+    //----------------------------------------------------------------------------------------------
+
+*/
+
 
     //---------------------------PreviewCallback----------------------------------------------------
     private Camera.PreviewCallback previewCallback = new Camera.PreviewCallback() {
